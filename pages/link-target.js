@@ -26,28 +26,10 @@ const LinkTarget = ({ data, posts }) => (
         <p>Posts Count: {posts.length}</p>
     </>
 )
-
+//This function runs server-side only. It is called by Next JS at build time prepare static props to be passed to the page
 export const getStaticProps = async () => {
-    const posts = [
-        {
-            userId: 1,
-            id: 1,
-            title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
-            body: 'quia et suscipit\n' +
-                'suscipit recusandae consequuntur expedita et cum\n' +
-                'reprehenderit molestiae ut ut quas totam\n' +
-                'nostrum rerum est autem sunt rem eveniet architecto'
-        },
-        {
-            userId: 1,
-            id: 2,
-            title: 'qui est esse',
-            body: 'est rerum tempore vitae\n' +
-                'sequi sint nihil reprehenderit dolor beatae ea dolores neque\n' +
-                'fugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\n' +
-                'qui aperiam non debitis possimus qui neque nisi nulla'
-        },
-    ]
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+    const posts = await res.json()
 
     const data = {
         site: "Statically Generated Website",
@@ -61,6 +43,5 @@ export const getStaticProps = async () => {
         }
     }
 }
-
 
 export default LinkTarget
