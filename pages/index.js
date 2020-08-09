@@ -8,6 +8,7 @@ export default function Index () {
                 <p><Link href="ReactWithJSX.html"><a>Navigate to Static HTML Page with JSX hosting React Component (Server-side Redirection)</a></Link></p>
                 <p><Link href="ReactWithoutJSX.html"><a>Navigate to Static HTML Page without JSX hosting React Component (Server-side Redirection)</a></Link></p>
                 <p><Link href="link-target"><a>Navigate to Next JS Page (Client-side Redirection)</a></Link></p>
+                <p><Link href="products"><a>List of Products to demonstrate Dynamic Routing</a></Link></p>
             </div>
         </Layout>
     )
