@@ -4,7 +4,7 @@
         <title>Static HTML with React Component</title>
     </head>
     <body>
-        <h1>This is a static HTML Page hosting a React Component</h1>
+        <h1>This is a static HTML Page in Public Dir hosting React Components</h1>
 
         <!--Containers to host our Stateful and Stateless Components-->
         <div id="Container1"></div>
@@ -22,7 +22,7 @@
                     super(props)
                 
                     this.state = {
-                        person: 'Stateful Persons'
+                        person: 'Stateful Person'
                     }
                 }
                 
@@ -41,7 +41,7 @@
             //ReactDOM.render(React.createElement(StatelessGreeting,{person: 'Stateless Person'},null),document.getElementById('Container2'));            
 
             ReactDOM.render(<Greeting/>, document.getElementById('Container1'));            
-            ReactDOM.render(<StatelessGreeting person='Stateles Persons'/>, document.getElementById('Container2'));            
+            ReactDOM.render(<StatelessGreeting person='Stateles Person'/>, document.getElementById('Container2'));            
         </script>
     </body>
 </html>
