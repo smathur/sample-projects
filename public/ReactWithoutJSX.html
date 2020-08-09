@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Static HTML with React Component</title>
+    </head>
+    <body>
+        <h1>This is a static HTML Page hosting a React Component</h1>
+
+        <!--Containers to host our Stateful and Stateless Components-->
+        <div id="Container1"></div>
+        <div id="Container2"></div>
+
+        <!--Import React Packages just before the closing body tag-->
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+        <!--Load React Component-->
+        <script>
+            class Greeting extends React.Component {
+                constructor(props) {
+                    super(props)
+                
+                    this.state = {
+                        person: 'Stateful Person'
+                    }
+                }
+                
+                render() {
+                    return (React.createElement('h2',null,`Hi ${this.state.person}`));
+                }
+            }
+
+            function StatelessGreeting(props) {
+                return (React.createElement('h2',null,`Hi ${props.person}`));
+            }
+
+            ReactDOM.render(React.createElement(Greeting,null,null),document.getElementById('Container1'));            
+            ReactDOM.render(React.createElement(StatelessGreeting,{person: 'Stateless Person'},null),document.getElementById('Container2'));            
+        </script>
+    </body>
+</html>
