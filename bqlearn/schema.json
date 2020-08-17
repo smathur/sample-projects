@@ -1,0 +1,29 @@
+[
+    {
+        "name": "OrderID",
+        "type": "INTEGER",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "CustomerID",
+        "type": "INTEGER",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "Items",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            {
+                "name": "ProductID",
+                "type": "INTEGER",
+                "mode": "REQUIRED"
+            },
+            {
+                "name": "Qty",
+                "type": "INTEGER",
+                "mode": "REQUIRED"
+            }
+        ]
+    }
+]

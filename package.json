@@ -22,6 +22,7 @@
     "isomorphic-fetch": "^2.2.1",
     "koa": "^2.13.0",
     "koa-session": "^6.0.0",
+    "ndjson": "^1.5.0",
     "next": "^9.5.1",
     "node-fetch": "^2.6.0",
     "react": "^16.13.1",
