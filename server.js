@@ -1,4 +1,4 @@
-require('isomorphic-fetch');
+require('isomorphic-fetch'); 
 const Koa = require('koa');
 const next = require('next');
 const { default: createShopifyAuth } = require('@shopify/koa-shopify-auth');
@@ -6,15 +6,14 @@ const dotenv = require('dotenv');
 const { verifyRequest } = require('@shopify/koa-shopify-auth');
 const session = require('koa-session');
 
-dotenv.config();
+dotenv.config(); //Load environment variables from .env file to process.env object
+const port = parseInt(process.env.PORT, 10) || 3000; //Read the PORT environment variable, radix set to decimal numeral system
+const dev = process.env.NODE_ENV !== 'production'; //Read the NODE_ENV environment variable to check if environment is set to Production
+const app = next({ dev }); //Instantiate next app in DEV or Production mode based on value of dev.
+const handle = app.getRequestHandler(); //Get the request handler for NEXT App
 
-const port = parseInt(process.env.PORT, 10) || 3000;
-const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev });
-const handle = app.getRequestHandler();
-
-const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY } = process.env;
-
+const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY } = process.env; //Read Shopify API Keys environment variables
+console.log(app)
 app.prepare().then(() => {
   const server = new Koa();
   server.use(session({ sameSite: 'none', secure: true }, server));

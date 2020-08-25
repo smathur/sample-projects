@@ -1,0 +1,76 @@
+{
+    "title": "Order-BillingShippingMismatch-ValidationRequired",
+    "trigger": "order_created",    
+    "cases": [
+        {
+            "condition": {
+                "op": "\u0026",
+                "args": [
+                    {
+                        "op": "==",
+                        "args": [
+                            {
+                                "field": "billingAddressMatchesShippingAddress",
+                                "on": {
+                                    "var": "order"
+                                }
+                            },
+                            true
+                        ]
+                    }
+                ]
+            },
+            "actions": [
+                {
+                    "id": "3d3b229e-0356-4801-b12d-b30c11b7950a",
+                    "action": "capture_payment",
+                    "properties": {}
+                }
+            ]
+        },
+        {
+            "condition": {
+                "op": "\u0026",
+                "args": [
+                    {
+                        "op": "\u003c",
+                        "args": [
+                            {
+                                "field": "amount",
+                                "on": {
+                                    "field": "shopMoney",
+                                    "on": {
+                                        "field": "netPaymentSet",
+                                        "on": {
+                                            "var": "order"
+                                        }
+                                    }
+                                }
+                            },
+                            100
+                        ]
+                    }
+                ]
+            },
+            "actions": [
+                {
+                    "id": "938666ef-69b1-43e0-acdd-fc98bb2bcca8",
+                    "action": "capture_payment",
+                    "properties": {}
+                }
+            ]
+        },
+        {
+            "condition": true,
+            "actions": [
+                {
+                    "id": "5ef60941-2a12-4245-8467-4fa193120c89",
+                    "action": "add_order_tags",
+                    "properties": {
+                        "tags": "Validation Required"
+                    }
+                }
+            ]
+        }
+    ]
+}
