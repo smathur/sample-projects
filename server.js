@@ -13,10 +13,9 @@ const app = next({ dev }); //Instantiate next app in DEV or Production mode base
 const handle = app.getRequestHandler(); //Get the request handler for NEXT App
 
 const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY } = process.env; //Read Shopify API Keys environment variables
-console.log(app)
-app.prepare().then(() => {
-  const server = new Koa();
-  server.use(session({ sameSite: 'none', secure: true }, server));
+app.prepare().then(() => { //Prepare the Next App to handle requests
+  const server = new Koa(); //Instantiate KOA server
+  server.use(session({ sameSite: 'none', secure: true }, server)); //Create a session middleware with given options
   server.keys = [SHOPIFY_API_SECRET_KEY];
 
   server.use(
